@@ -1,6 +1,5 @@
-import numpy
+from neuralnet import NeuralNet
 
-matrix = numpy.zeros([2, 2])
-matrix[0, 1] = 1
-matrix[0, 0] = 3
-print(matrix)
+neuralNet = NeuralNet(2, 2, 2, 0.3)
+
+neuralNet.print_weights()
