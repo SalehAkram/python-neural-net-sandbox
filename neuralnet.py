@@ -11,7 +11,10 @@ class NeuralNet:
         self.lr = learning_rate
         self.wih = numpy.random.normal(0.0, pow(self.inodes, -0.5), (self.hnodes, self.inodes))
         self.who = numpy.random.normal(0.0, pow(self.hnodes, -0.5), (self.onodes, self.hnodes))
-        self.activation_function = lambda x: sigmoid(x)
+        # self.activation_function = lambda x: sigmoid(x)
+
+    def activation_function(self, x):
+        return sigmoid(x)
 
     def print_weights(self):
         print(f"input to hidden weights {self.wih}")
