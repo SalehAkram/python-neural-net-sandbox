@@ -63,7 +63,7 @@ class NeuralNetMultiLayers(INeuralNet):
             self.weights[i] += weight_update
 
     def query(self, input_list):
-        inputs = np.array(input_list, ndmin=2).T
+        inputs = numpy.array(input_list, ndmin=2).T
         layer_outputs = [self.activation_function(numpy.dot(self.weights[0], inputs))]
 
         for i in range(1, len(self.weights)):
