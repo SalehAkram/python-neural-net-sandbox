@@ -1,7 +1,7 @@
-from NeuralNetFactory.hyper_parameters import HyperParameters
-from NeuralNets.i_neuralnet import INeuralNet
-from NeuralNets.neuralnet_3_layers import NeuralNet3Layers
-from NeuralNets.neuralnet_multi_layers import NeuralNetMultiLayers
+from neuralnet_factory.hyper_parameters import HyperParameters
+from neuralnets.neuralnet import NeuralNet
+from neuralnets.neuralnet_3_layers import NeuralNet3Layers
+from neuralnets.neuralnet_multi_layers import NeuralNetMultiLayers
 
 
 class NeuralNetFactory:
@@ -24,13 +24,13 @@ class NeuralNetFactory:
         number_of_hidden_layers = number_of_layers - 2
         input_nodes = int(input("Number of input nodes: "))
         for h in range(number_of_hidden_layers):
-            hidden_layers.append(int(input(f"number of nodes for hidden layer {h+1}: ")))
+            hidden_layers.append(int(input(f"number of nodes for hidden layer {h + 1}: ")))
         output_nodes = int(input("Number of output nodes: "))
 
         hyper_parameters = HyperParameters(input_nodes, hidden_layers, output_nodes, learning_rate)
         return hyper_parameters
 
-    def create_neuralnet(self, hyper_parameters: HyperParameters) -> INeuralNet:
+    def create_neuralnet(self, hyper_parameters: HyperParameters) -> NeuralNet:
         if len(hyper_parameters.hidden_layers) < 2:
             number_of_hidden_nodes = hyper_parameters.hidden_layers[0]
             neural_net = NeuralNet3Layers(hyper_parameters.input_nodes, number_of_hidden_nodes,

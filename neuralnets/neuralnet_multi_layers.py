@@ -1,15 +1,19 @@
 import numpy
 from scipy.special import expit as sigmoid
-from NeuralNets.i_neuralnet import INeuralNet
+from neuralnets.neuralnet import NeuralNet
 
 
-class NeuralNetMultiLayers(INeuralNet):
+class NeuralNetMultiLayers(NeuralNet):
 
     def __init__(self, inodes, hnodes_list, onodes, learning_rate):
         self.inodes = inodes
         self.hnodes_list = hnodes_list
         self.onodes = onodes
         self.lr = learning_rate
+        self.hyper_parameters_dic = {
+            "on": self.onodes,
+            "in": self.inodes
+        }
         self.weights = self.initialize_weights()
 
     def initialize_weights(self):
@@ -32,11 +36,9 @@ class NeuralNetMultiLayers(INeuralNet):
     def activation_function(self, x):
         return sigmoid(x)
 
+    def hyper_parameters(self, key):
+        return self.hyper_parameters_dic[key]
 
-    def hyper_parameters(self):
-        to_return = (f"number of input nodes {self.inodes}, hidden layers {self.hnodes_list}, "
-                     f"number of output nodes {self.onodes}")
-        return to_return
     def train(self, input_list, target_list):
         inputs = numpy.array(input_list, ndmin=2).T
         targets = numpy.array(target_list, ndmin=2).T

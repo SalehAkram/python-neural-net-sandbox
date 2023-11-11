@@ -1,10 +1,10 @@
 import numpy
 from scipy.special import expit as sigmoid
 
-from NeuralNets.i_neuralnet import INeuralNet
+from neuralnets.neuralnet import NeuralNet
 
 
-class NeuralNet3Layers(INeuralNet):
+class NeuralNet3Layers(NeuralNet):
     def __init__(self, inodes: int, hnodes: int, onodes: int, learning_rate: float):
         self.inodes = inodes
         self.hnodes = hnodes
@@ -12,14 +12,16 @@ class NeuralNet3Layers(INeuralNet):
         self.lr = learning_rate
         self.wih = numpy.random.normal(0.0, pow(self.inodes, -0.5), (self.hnodes, self.inodes))
         self.who = numpy.random.normal(0.0, pow(self.hnodes, -0.5), (self.onodes, self.hnodes))
+        self.hyper_parameters_dic = {
+            "on": self.onodes,
+            "in": self.inodes
+        }
 
     def activation_function(self, x):
         return sigmoid(x)
 
-    def hyper_parameters(self):
-        to_return = (f"number of input nodes {self.inodes}, number of hidden layers {1}, "
-                     f"number of output nodes {self.onodes}")
-        return to_return
+    def hyper_parameters(self, key):
+        return self.hyper_parameters_dic[key]
 
     def train(self, input_list, target_list):
         inputs = numpy.array(input_list, ndmin=2).T
