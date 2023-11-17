@@ -1,5 +1,5 @@
-from academy.normalization_strategy import NormalizationStrategy
 import numpy
+from academy.normalization_strategy import NormalizationStrategy
 
 
 class DigitNormalizationStrategy(NormalizationStrategy):

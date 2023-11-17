@@ -2,10 +2,7 @@ import os
 import pickle
 import numpy
 from PIL import Image
-
-
-from academy.strategies.digit_normalization_strategy import DigitNormalizationStrategy
-
+from academy.digit_normalization_strategy import DigitNormalizationStrategy
 
 
 class DigitRecognizer:

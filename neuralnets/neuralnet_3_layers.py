@@ -1,6 +1,5 @@
 import numpy
 from scipy.special import expit as sigmoid
-
 from neuralnets.neuralnet import NeuralNet
 
 

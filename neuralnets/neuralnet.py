@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
-from neuralnet_factory.hyper_parameters import HyperParameters
 
 
 class NeuralNet(ABC):
     @abstractmethod
-    def hyper_parameters(self, key:str):
+    def hyper_parameters(self, key: str):
         pass
 
     @abstractmethod
